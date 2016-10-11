@@ -21,7 +21,7 @@ RUN apt-get install --no-install-recommends -qy apg
 RUN apt-get install --no-install-recommends -qy sudo
 RUN sed -ri 's/^;extension=php_mbstring/extension=php_gd2/g' /etc/php/7.0/cli/php.ini
 RUN sed -ri 's/^;extension=php_mbstring/extension=php_gd2/g' /etc/php/7.0/apache2/php.ini
-RUN sed -ri 's/^;extension=php_mbstring/extension=php_mbstring/g' /etc/php/7.0/apache2/php.ini
+RUN sed -ri 's/^;extension=php_mbstring/extension=php_mbstring/g' /etc/php/7.0/cli/php.ini
 RUN sed -ri 's/^;extension=php_mbstring/extension=php_mbstring/g' /etc/php/7.0/apache2/php.ini
 
 # Supervisor
