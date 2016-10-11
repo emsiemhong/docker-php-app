@@ -19,8 +19,10 @@ RUN apt-get install --no-install-recommends -qy git
 RUN apt-get install --no-install-recommends -qy less vim-tiny
 RUN apt-get install --no-install-recommends -qy apg
 RUN apt-get install --no-install-recommends -qy sudo
-RUN sed -i 's/;extension=php_mbstring.dll/extension=php_mbstring.dll/' /etc/php/7.0/apache2/php.ini
-RUN sed -i 's/;extension=php_mbstring.dll/extension=php_mbstring.dll/' /etc/php/7.0/cli/php.ini
+RUN sed '/^\s*;\s*extension\s*=\s*php_mbstring.*\.dll/s/^\s\s*;\s\s*//' /etc/php/7.0/apache2/php.ini
+RUN sed '/^\s*;\s*extension\s*=\s*php_mbstring.*\.dll/s/^\s\s*;\s\s*//' /etc/php/7.0/cli/php.ini
+RUN sed '/^\s*;\s*extension\s*=\s*php_gd2.*\.dll/s/^\s\s*;\s\s*//' /etc/php/7.0/apache2/php.ini
+RUN sed '/^\s*;\s*extension\s*=\s*php_gd2.*\.dll/s/^\s\s*;\s\s*//' /etc/php/7.0/cli/php.ini
 
 # Supervisor
 RUN mkdir -p /var/log/supervisor
