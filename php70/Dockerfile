@@ -14,14 +14,11 @@ RUN apt-get update
 RUN apt-get install --no-install-recommends -qy apt-utils
 RUN apt-get install --no-install-recommends -qy supervisor
 RUN apt-get install --no-install-recommends -qy apache2
-RUN apt-get install --no-install-recommends -qy --force-yes php7.0 php7.0-xml php7.0-zip php7.0-curl php7.0-intl php7.0-pgsql php-apcu php7.0-dev
+RUN apt-get install --no-install-recommends -qy --force-yes php7.0 php7.0-mbstring php7.0-xml php7.0-zip php7.0-curl php7.0-intl php7.0-pgsql php-apcu php7.0-dev
 RUN apt-get install --no-install-recommends -qy git
 RUN apt-get install --no-install-recommends -qy less vim-tiny
 RUN apt-get install --no-install-recommends -qy apg
 RUN apt-get install --no-install-recommends -qy sudo
-# Install mbstring
-RUN docker-php-ext-install mbstring
-RUN docker-php-ext-install gd
 
 RUN sed -ri 's/^;extension=php_mbstring/extension=php_gd2/g' /etc/php/7.0/cli/php.ini
 RUN sed -ri 's/^;extension=php_mbstring/extension=php_gd2/g' /etc/php/7.0/apache2/php.ini
